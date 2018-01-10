@@ -3,5 +3,10 @@ MLP-framework and DQN-framework for OpanAI's Gym - written in numpy
   
   
 # Intro  
-MLP framework and DDQN framework for OpenAI's Gym game environments.  
-Take a look at the [Documentation](./documentation.ipynb)
+MLP framework and DDQN framework for OpenAI's gym game environments.  
+Take a look at the [Documentation](./documentation.ipynb)  
+  
+# Installation  
+There are very few dependencies, since most of it is written in `numpy`.  
+The `mlp_framework.py` shouble able to run on nearly anything that can interpret `python3`.  
+The `ddqn_framework.py` additionally uses [OpenAI's gym](https://github.com/openai/gym)  
