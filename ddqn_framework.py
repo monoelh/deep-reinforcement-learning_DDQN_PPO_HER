@@ -256,53 +256,6 @@ LOUT.f = nn.f_iden
 onlineNet = nn.mlp([A1,A2,AOUT])
 targetNet = nn.mlp([L1,L2,LOUT])
 
-### dueling networks: experimental. not working yet. check loss fnct deriv !!!!
-A0 = nn.layer(configuration.INPUT_SIZE,64)
-A1 = nn.layer(64,64)
-A0t = nn.layer(configuration.INPUT_SIZE,64)
-A1t = nn.layer(64,64)
-AA = nn.layer(64,64)
-AAA = nn.layer(64,1)
-B = nn.layer(64,64)
-BB = nn.layer(64,configuration.OUTPUT_SIZE)
-AAt = nn.layer(64,64)
-AAAt = nn.layer(64,1)
-Bt = nn.layer(64,64)
-BBt = nn.layer(64,configuration.OUTPUT_SIZE)
-LL0_ = [A0,A1]
-LL0_t = [A0t,A1t]
-LLV_ = [AA,AAA]
-LLV_t = [AAt,AAAt]
-LLA_ = [B,BB]
-LLA_t = [Bt,BBt]
-onlineNet = nn.dueling_mlp(LL0_,LLV_,LLA_)
-targetNet = nn.dueling_mlp(LL0_t,LLV_t,LLA_t)
-
-### dense mlp for DDQN: works quite well, even with 7 layers. despite fast convergence, instability dips can be seen early in training 
-# regularozation helps a bit with instability ?! why is this happening in RL. maybe task dependent (CartPole-v0)
-INPUT_SIZE = configuration.INPUT_SIZE
-OUTPUT_SIZE = configuration.OUTPUT_SIZE
-L1 = nn.layer(INPUT_SIZE,OUTPUT_SIZE*10)
-L2 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*10,OUTPUT_SIZE*10)
-L3 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*20,OUTPUT_SIZE*10)
-L4 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*30,OUTPUT_SIZE*10)
-L5 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*40,OUTPUT_SIZE*10)
-L6 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*50,OUTPUT_SIZE*10)
-L7 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*60,OUTPUT_SIZE*10)
-LOUT = nn.layer(INPUT_SIZE+(OUTPUT_SIZE*30),OUTPUT_SIZE)
-LOUT.f = nn.f_iden
-A1 = nn.layer(INPUT_SIZE,OUTPUT_SIZE*10)
-A2 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*10,OUTPUT_SIZE*10)
-A3 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*20,OUTPUT_SIZE*10)
-A4 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*30,OUTPUT_SIZE*10)
-A5 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*40,OUTPUT_SIZE*10)
-A6 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*50,OUTPUT_SIZE*10)
-A7 = nn.layer(INPUT_SIZE+OUTPUT_SIZE*60,OUTPUT_SIZE*10)
-AOUT = nn.layer(INPUT_SIZE+(OUTPUT_SIZE*30),OUTPUT_SIZE)
-AOUT.f = nn.f_iden
-onlineNet = nn.dense_mlp([A1,A2,A3,AOUT])
-targetNet = nn.dense_mlp([L1,L2,L3,LOUT])
-
 # STEP 3: create trainer
 ddqn = trainer(onlineNet,targetNet,configuration)
 
