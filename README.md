@@ -1,9 +1,5 @@
 # DDQN-deepRL_in_games
-MLP-framework and DDQN-framework for OpanAI's Gym - written in numpy  
-  
-  
-# Intro  
-MLP framework and DDQN framework for OpenAI's gym game environments.  
+MLP framework and DDQN framework for OpenAI's gym game environments. - written in numpy 
 Take a look at the [Documentation](./documentation.ipynb)  
   
 # Installation  
