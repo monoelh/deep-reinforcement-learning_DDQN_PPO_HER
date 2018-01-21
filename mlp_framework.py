@@ -467,12 +467,12 @@ class dueling_mlp:
         #print(self.loss.shape,'TD loss shape')
         
         ###################################################
-        #gradA = self.erf(target_-target_.mean(1)[:,True],outA,True)
-        #gradV = self.erf(target_.mean(1)[:,True],outV,True)
+        gradA = self.erf(target_-target_.mean(1)[:,True],outA,True)
+        gradV = self.erf(target_.mean(1)[:,True],outV,True)
         # this might be the reason why it's not working. calculate a correct loss please...
         ###################################################
-        gradA = self.TD_loss 
-        gradV = self.TD_loss.mean(1)[:,True]
+        #gradA = self.TD_loss 
+        #gradV = self.TD_loss.mean(1)[:,True]
         #print(gradV.shape, 'grad V')
         for L in self.LLA[::-1]:
             #print(grad.shape, 'before grad')
