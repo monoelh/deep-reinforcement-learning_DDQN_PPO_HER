@@ -469,7 +469,7 @@ class dueling_mlp:
         ###################################################
         gradA = self.erf(target_-target_.mean(1)[:,True],outA,True)
         gradV = self.erf(target_.mean(1)[:,True],outV,True)
-        # this might be the reason why it's not working. calculate a correct loss please...
+        # this might be the reason why it's not working. calculate a correct loss...
         ###################################################
         #gradA = self.TD_loss 
         #gradV = self.TD_loss.mean(1)[:,True]
