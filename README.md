@@ -1,4 +1,4 @@
-# DDQN-deepRL_in_games
+# Deep Reinforcement Learning in Games
 MLP framework and DDQN framework for OpenAI's gym game environments. - written in numpy  
 Take a look at the [Examples in the Documentation](./documentation.ipynb).
   
